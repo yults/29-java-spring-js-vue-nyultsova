@@ -1,0 +1,94 @@
+.filters_and_catalog {
+    width: 100%;
+    margin-left: 40px;
+}
+
+.filter-ul {
+    position: absolute;
+    border: 1px solid #333333;
+    background-color: rgba(236, 236, 236, 0.91);
+    margin-top: 20px;
+    z-index: 900;
+}
+
+.filter-ul-li {
+    text-align: center;
+    padding: 5px;
+    width: 250px;
+}
+
+.filter-ul-li:hover {
+    background-color: #cccccc;
+}
+
+.filter-buttons {
+    display: flex;
+    margin-top: 40px;
+
+    width: 100%;
+}
+
+.filters-modal {
+    position: relative;
+    z-index:500;
+}
+
+.filter-modal-button {
+    border-radius: 20px;
+    padding: 5px 10px;
+    width: 250px;
+}
+
+.filter-modal-button:hover .arrow-icon {
+    color: blue;
+}
+
+.filter-modal-button-wide:hover .arrow-icon {
+    color: blue;
+}
+
+.filters-for-open {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: -300px;
+    width: 300px;
+    background-color: rgba(234, 234, 234, 0.92);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-out;
+    z-index: 998;
+}
+
+.filters-open {
+    display: block;
+    right: 0;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.button-to-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.arrow-icon {
+    margin-left: 10px;
+}
+
+.arrow-up:before {
+    content: "\25B2"; /* Символ стрелки вверх */
+}
+
+.arrow-down:before {
+    content: "\25BC"; /* Символ стрелки вниз */
+}
+
+.filter__property__names_val {
+    font-weight: 400;
+    margin-left: 20px;
+    color: red;
+}

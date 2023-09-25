@@ -1,0 +1,43 @@
+
+.registration_name_input {
+    width: 100%;
+    margin-top: -30px;
+    height: 30px;
+    margin-bottom: 10px;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+.registration_buttons {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.registration_name_inputs {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.registration_name_input {
+    width: 180px;
+}
+
+.auth_inputs {
+    width: 400px;
+    height: 30px;
+    margin-bottom: 3px;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+.registration_window {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

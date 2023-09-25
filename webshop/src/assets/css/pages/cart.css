@@ -1,0 +1,151 @@
+.cart__component {
+    padding: 36px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    align-items: stretch;
+    margin-left: 20px;
+}
+
+.cart-page {
+    border-radius: 15px;
+    min-height: 400px;
+    background-color: lightgray;
+    padding: 20px 10px;
+    margin: 20px 30px 0;
+    font-size: 12px;
+}
+
+.cart__pic {
+    width: 70px;
+    height: 70px;
+}
+
+.cart__header {
+    margin: 0 20px 40px 20px;
+    font-size: 20px;
+}
+
+.button_bin_cart {
+    font-size: 18px;
+    color:rgb(80, 80, 80)
+}
+
+.cart__info, .cart__product-sum {
+    font-weight: var(--font-weight-bold);
+    font-size: 12px;
+}
+
+.cart__info_label {
+    padding-right: 10px;
+}
+
+.cart__total_header {
+    margin-top: -14px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.cart__total {
+    margin-right: 30px;
+    padding: 10px 0 10px 20px;
+    background-color: whitesmoke;
+    width: 25%;
+    max-width: 300px;
+    min-width: 150px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.send_cart {
+    width: 90%;
+    padding: 8px 0 7px 0;
+    color: aliceblue;
+    background-color: rgb(0, 94, 255);
+    border-color: transparent;
+}
+
+.send_cart:hover {
+    background-color: rgb(0, 130, 255);
+}
+
+.cart__body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+    .cart__pic {
+        width: 100px;
+        height: 110px;
+    }
+
+    .cart__info,
+    .cart__product-sum {
+        font-weight: var(--font-weight-bold);
+        font-size: 15px;
+    }
+
+    .cart-page {
+        font-size: 16px;
+        min-height: 700px;
+    }
+
+    .cart__header {
+        font-size: 23px;
+    }
+
+    .button_bin_cart {
+        font-size: 20px;
+    }
+
+    .cart__total_header {
+        font-size: 18px;
+    }
+
+    .cart__total {
+        font-size: 14px;
+    }
+
+    .button__less, .button__more {
+        font-weight: 700;
+        width: auto;
+        height: auto;
+        font-size: 14px;
+    }
+
+    .cart__name-product {
+        width: 200px;
+    }
+
+    .cart__check-pic {
+        padding-right: 30px;
+        margin-left: -10px;
+    }
+
+    .checkbox-container .checkmark {
+        height: 20px;
+        width: 20px;
+        border-radius: 3px;
+    }
+
+    .checkbox-container .checkmark:after {
+        left: 8px;
+        top: 3px;
+        width: 5px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    .cart__button_send {
+        font-weight: 500;
+        font-size: 14px;
+    }
+}

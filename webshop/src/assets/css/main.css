@@ -1,0 +1,58 @@
+
+:root {
+    /* Переменные для повторяющихся значений */
+    --font-weight-bold: 600;
+    --font-size-large: 25px;
+    --color-green: green;
+    --background-color-whitesmoke: whitesmoke;
+    --color-aliceblue: aliceblue;
+    --color-blue: rgb(0, 94, 255);
+}
+
+.hr__main-header {
+    margin-top: 0;
+    border: 0;
+    border-top: 2px solid lightgray;;
+    color: rgb(128, 128, 128);
+}
+
+.link__to-cart {
+    color: black;
+}
+
+.catalog__navigation {
+    color: red;
+    font-size: 22px;
+}
+
+.my-flex_row {
+    display: flex;
+    flex-direction: row;
+}
+
+.button__entry {
+    color: black;
+}
+
+.hr__login {
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 0;
+    border-top: 2px solid white;
+    color: white;
+}
+
+.main_page {
+    margin-bottom: 40px;
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.main_footer {
+    margin-top: auto;
+}

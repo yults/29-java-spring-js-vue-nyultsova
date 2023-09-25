@@ -1,0 +1,51 @@
+{
+  "property": [
+    {
+      "id": 1,
+      "parentId": null,
+      "name": "цвет"
+    },
+    {
+      "id": 2,
+      "parentId": null,
+      "name": "размер"
+    },
+    {
+      "id": 3,
+      "parentId": 2,
+      "name": "большой"
+    },
+    {
+      "id": 4,
+      "parentId": 2,
+      "name": "маленький"
+    },
+    {
+      "id": 5,
+      "parentId": 2,
+      "name": "средний"
+    },
+    {
+      "id": 6,
+      "parentId": 1,
+      "name": "черный"
+    },
+    {
+      "id": 7,
+      "parentId": 1,
+      "name": "белый"
+    }
+  ,
+    {
+      "id": 8,
+      "parentId": 1,
+      "name": "синий"
+    }
+  ,
+    {
+      "id": 9,
+      "parentId": 1,
+      "name": "красный"
+    }
+  ]
+}

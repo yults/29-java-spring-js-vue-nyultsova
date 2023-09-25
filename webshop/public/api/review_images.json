@@ -1,0 +1,20 @@
+{
+  "review_images": [
+    {
+      "review_id": 1,
+      "images_id": 1
+    },
+    {
+      "review_id": 2,
+      "images_id": 2
+    },
+    {
+      "review_id": 2,
+      "images_id": 3
+    },
+    {
+      "review_id": 3,
+      "images_id": 4
+    }
+  ]
+}

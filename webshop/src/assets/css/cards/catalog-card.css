@@ -1,0 +1,153 @@
+.catalog__body {
+    padding: 30px 0 0 0;
+    margin: 0 auto 0 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.catalog__pic {
+    margin: 0 20px 0 60px;
+    width: 80px;
+    height: 100px;
+}
+
+
+.catalog__name-desc {
+    font-size: 12px;
+    width: 100%;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.catalog__name {
+    font-weight: 500;
+    color: green;
+    padding-bottom: 10px;
+}
+
+.catalog__name:hover {
+    font-weight: 900;
+}
+
+
+.catalog__avail {
+    font-size: 12px;
+    font-weight: var(--font-weight-bold);
+    width: 150px;
+    margin-right: 40px;
+}
+
+.catalog__avail_green {
+    color: green;
+}
+
+.catalog__avail_yellow {
+    color: yellow;
+}
+
+.catalog__avail_red {
+    color: red;
+}
+
+
+.catalog__price-cart {
+    margin-right: 120px;
+    margin-top: -20px;
+    min-width: 80px;
+    font-size: 14px;
+}
+
+.catalog__price {
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 10px;
+}
+
+.catalog__price_sale_not {
+    text-decoration: line-through;
+    color: #6e6d6d;
+}
+
+
+.button__active {
+    margin-top: 5px;
+    min-width: 100px;
+    background-color: rgb(0, 94, 255);
+    font-size: 14px;
+    color: aliceblue;
+    padding: 5px 12px;
+    border-color: transparent;
+}
+
+.button__active:hover {
+    background-color: rgb(0, 130, 255);
+}
+
+.button__active_not {
+    font-size: 14px;
+    min-width: 100px;
+    padding: 5px 12px;
+    margin-top: 5px;
+    background-color: grey;
+    color: aliceblue;
+    border-color: transparent;
+}
+
+.stars {
+    margin-left: 30px;
+    color: transparent;
+    display: inline-block;
+    font-size: 1.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+.stars:before {
+    content: "\2605\2605\2605\2605\2605";
+    letter-spacing: 0.05em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, gold, gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stars__container {
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.my-star {
+    position: relative;
+    display: inline-block;
+    width: 1.1em;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.cnt-rate {
+    position: relative;
+    display: inline-block;
+}
+
+.catalog__separator {
+    border: 1px solid lightgray;
+}
+
+.catalog_properties {
+    border-radius: 3px;
+    border: 1px solid blue;
+    margin-left: 10px;
+}
+
+.catalog_properties_box {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap
+}

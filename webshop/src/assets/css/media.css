@@ -1,0 +1,53 @@
+/* NAVIGATION ---------------------------------------*/
+@media (max-width: 1080px) {
+
+    .auth_header, .main_header {
+        font-size: 17px;
+    }
+}
+
+/* CATALOG -------------------------------*/
+
+@media (min-width: 1024px) {
+    .catalog__body {
+        flex-wrap: nowrap;
+    }
+
+    .catalog__pic {
+        margin: 0 20px 0 60px;
+        width: 130px;
+        height: 165px;
+    }
+
+    .catalog__name-desc {
+        font-size: 15px;
+    }
+
+    .catalog__name {
+        font-weight: 500;
+        color: green;
+        font-size: 17px;
+    }
+
+    .catalog__price-cart {
+        width: 200px;
+        font-size: 16px;
+    }
+
+    .catalog__avail {
+        font-size: 14px;
+        width: 100px;
+    }
+}
+
+/* REGISTER -------------------------------*/
+
+
+@media (max-height: 480px) {
+    .auth-page, .registration-page {
+        display: flex;
+        margin-top: 30px;
+        align-items: flex-start;
+        background-color: rgb(80, 80, 80);
+    }
+}

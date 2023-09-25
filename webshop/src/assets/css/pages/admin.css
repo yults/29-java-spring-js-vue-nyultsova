@@ -1,0 +1,103 @@
+.admin__inputs_short {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.admin__inputs_option {
+    color: black;
+    background-color: #bbbbbb;
+    height: 100%;
+    padding: 40px;
+}
+
+.admin-page {
+    margin: 0 50px;
+}
+
+.admin-page__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.admin-page__list_title {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.admin-page__list_card {
+    padding: 50px;
+}
+
+.products__list_title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.properties__list_title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.not_my_flex_row {
+    margin-left: -220px;
+}
+
+.not_my_flex_row_prop {
+    margin-left: -170px;
+}
+
+.button-plus {
+    margin-left: 10px;
+}
+.button-minus {
+    margin-left: 5px;
+}
+
+
+.admin_details {
+    font-size: 14px;
+    font-style: italic;
+    color: #333333;
+}
+
+
+.admin-modal {
+    overflow-y: hidden;
+    display: block !important; /*перебивка bootstap-овского-->*/
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.admin-modal__overlay {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.admin-modal__container {
+    position: relative;
+    z-index: 1;
+    margin: 5% auto 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    width: 100%;
+    max-height: 800px;
+}

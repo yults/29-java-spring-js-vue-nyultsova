@@ -1,0 +1,96 @@
+
+.error_messages {
+    text-align: center;
+}
+
+.wrapper_color {
+    background-color: rgb(80, 80, 80);
+    overflow: hidden;
+}
+
+.catalog_login {
+    color: white;
+}
+
+.auth_header {
+    background-color: rgb(80, 80, 80);
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button_bin-login {
+    color: white;
+}
+
+.error-feedback {
+    color: red;
+}
+
+.auth-page, .registration-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: rgb(80, 80, 80);
+}
+
+.new_acc_link {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 50px;
+    text-decoration: underline;
+}
+
+.auth__window, .registration_window {
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.auth__head, .registration_h {
+    text-align: center;
+    font-weight: var(--font-weight-bold);
+    font-size: 20px;
+    margin-bottom: 70px;
+    padding-top: 22px;
+    color: rgb(80, 80, 80);
+}
+
+.registration_inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+    justify-content: space-around
+}
+
+.auth__inputs {
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    align-items: center;
+}
+
+.auth__buttons {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.send_entry {
+    font-weight: var(--font-weight-bold);
+    width: 400px;
+    margin: 0;
+    padding: 8px 0;
+    background-color: rgb(128, 128, 128);
+    border: 3px solid black;
+    box-shadow: 5px 5px black;
+}

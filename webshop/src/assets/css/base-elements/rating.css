@@ -1,0 +1,25 @@
+.rating {
+    margin-left: 30px;
+    display: inline-block;
+}
+
+.rating label {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating .star:before {
+    content: "★";
+    color: #ddd;
+    font-size: 23px;
+}
+
+.rating .star.highlighted:before,
+.rating input:checked ~ .star:before,
+.rating .star.selected:before {
+    color: #ffce3d;
+}
