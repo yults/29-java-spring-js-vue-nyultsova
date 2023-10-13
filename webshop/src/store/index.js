@@ -21,7 +21,8 @@ const store = createStore({
       "userS",
       "users_reviewS",
       "curUserId",
-      "curUserRole"
+      "curUserRole",
+        "priceS_sale"
     ]),
   },
   /**
@@ -50,6 +51,7 @@ const store = createStore({
     product_categoryS: [],
     reviewS: [],
     propertyS: [],
+    priceS_sale: [],
     product_propertyS: [],
     product_image: [],
     product_imageS: [],
@@ -72,6 +74,11 @@ const store = createStore({
         cart_check: false,
         cnt: 0,
         avail: product.quantity === 0 ? "Нет в наличии" : product.quantity < 6 ? "Мало" : "В наличии"
+      }));
+    },
+    setPriceSale(state, data) {
+      state.priceS_sale = data.price_sale.map(product => ({
+        ...product
       }));
     },
     setCategory(state, data) {
@@ -163,6 +170,14 @@ const store = createStore({
           .then(response => response.json())
           .then(data => {
             commit("setProductImages", data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      fetch("/api/price_sale.json")
+          .then(response => response.json())
+          .then(data => {
+            commit("setPriceSale", data);
           })
           .catch(error => {
             console.log(error);

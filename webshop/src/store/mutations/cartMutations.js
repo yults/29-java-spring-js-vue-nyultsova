@@ -16,7 +16,6 @@ export default {
             quantity: item.quantity,
             id: item.id,
             price: item.price,
-            price_sale: item.price_sale,
             image: item.image,
             cnt: 1,
             cart_check: true,

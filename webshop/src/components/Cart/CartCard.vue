@@ -34,11 +34,11 @@
             </div>
         </div>
         <div class="cart__product-sum">
-          <span class="catalog__price_sale_not">
-            {{ formatNumber(price) }} руб
-          </span>
-          <div class="catalog_money_sale">
-            {{ formatNumber(price_sale) }} руб
+          <span :class="{'catalog__price_sale_not' : price_sale > 0, 'catalog__price_sale': price_sale < 0}">
+                {{ formatNumber(price) }} руб
+              </span>
+          <div v-if="price_sale > 0" class="catalog__price_sale">
+                {{ formatNumber(price_sale) }} руб
           </div>
         </div>
     </div>

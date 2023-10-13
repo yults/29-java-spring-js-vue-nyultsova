@@ -27,10 +27,10 @@
 
         <div class="catalog__price-cart">
             <div class="catalog__price">
-              <span class="catalog__price_sale_not">
+              <span :class="{'catalog__price_sale_not' : price_sale > 0, 'catalog__price_sale': price_sale < 0}">
                 {{ formatNumber(price) }} руб
               </span>
-              <div class="catalog__price_sale">
+              <div v-if="price_sale > 0" class="catalog__price_sale">
                 {{ formatNumber(price_sale) }} руб
               </div>
             </div>

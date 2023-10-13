@@ -124,6 +124,10 @@ export default {
             let indexToDelete4 = state.product_propertyS.findIndex(obj => obj.product_id === productId);
             state.product_propertyS.splice(indexToDelete4, 1);
         }
+        while (state.priceS_sale.findIndex(obj => obj.product_id === productId) !== -1) {
+            let indexToDelete5 = state.priceS_sale.findIndex(obj => obj.product_id === productId);
+            state.priceS_sale.splice(indexToDelete5, 1);
+        }
     },
 
     /**
@@ -136,20 +140,12 @@ export default {
      */
     addProductByAdminPage(state, payload) {
         const {categoryId, name, description, quantity, price, price_sale, images} = payload;
-        const maxId = state.product_categoryS.reduce((max, obj) => obj.id > max ? obj.id : max, 0);
+        const maxId = state.info.reduce((max, obj) => obj.id > max ? obj.id : max, 0);
         let newCategory = {
             id: maxId + 1,
             product_id: maxId + 1,
             category_id: categoryId
         };
-        for (let img of images)
-        {
-            let newProductImages = {
-                product_id: maxId + 1,
-                images_id: img
-            };
-            state.product_imageS.push(newProductImages);
-        }
         state.product_categoryS.push(newCategory);
         let item = {
             name: name,
@@ -158,10 +154,25 @@ export default {
             quantity: quantity,
             id: maxId + 1,
             price: price,
-            price_sale: price_sale,
             cnt: 0,
         };
         state.info.push(item);
+        for (let img of images)
+        {
+            let newProductImages = {
+                product_id: maxId + 1,
+                images_id: img
+            };
+            state.product_imageS.push(newProductImages);
+        }
+        if (price_sale.length > 0) {
+            let price_sale_el = {
+                id: maxId + 1,
+                product_id: maxId + 1,
+                price_sale: price_sale
+            }
+            state.priceS_sale.push(price_sale_el)
+        }
     },
     addImageToProduct(state, payload) {
         const {url, image_id} = payload;

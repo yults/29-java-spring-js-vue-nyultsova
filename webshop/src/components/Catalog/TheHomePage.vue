@@ -40,20 +40,24 @@
                      v-if="showFingNothing">
                   По данному запросу ничего не найдено
                 </div>
-                <CatalogCard
-                    v-for="(item) in filteredInfo"
-                    :name="item.name"
-                    :description="item.description"
-                    :avail="item.avail"
-                    :price="item.price"
-                    :price_sale="item.price_sale"
-                    :cnt="item.cnt"
-                    :quantity="item.quantity"
-                    :id="item.id"
-                    :cart_check="item.cart_check"
-                    :key="item.id"
-                    @add-to-cart="addToCart(item.id)"
-                ></CatalogCard>
+                <div id="app">
+                  <CatalogCard
+                      v-for="(item) in filteredInfo"
+                      :name="item.name"
+                      :description="item.description"
+                      :avail="item.avail"
+                      :price="parseInt(item.price)"
+                      :price_sale="get_price_sale(item.id)"
+                      :cnt="item.cnt"
+                      :quantity="item.quantity"
+                      :id="item.id"
+                      :cart_check="item.cart_check"
+                      :key="item.id"
+                      @add-to-cart="addToCart(item.id)"
+                  ></CatalogCard>
+<!--                  <InfiniteLoading target="#app" @infinite="load">-->
+<!--                    </InfiniteLoading>-->
+                </div>
               </div>
         </div>
         </div>
@@ -71,18 +75,25 @@ import CatalogCard from "./CatalogCard.vue";
 import CategoryComponent from '@/components/Category/CategoryNode.vue'
 import HeaderRight from "@/components/Buttons/HeaderRight.vue";
 import CatalogFilter from "@/components/Catalog/CatalogFilter.vue";
+// import InfiniteLoading from "v3-infinite-loading";
+import "v3-infinite-loading/lib/style.css"
+
 export default {
   components: {
     HeaderRight,
     CatalogCard,
     CatalogFilter,
-    CategoryComponent
+    CategoryComponent,
+    // InfiniteLoading
   },
   computed: {
     ...mapGetters([
       'getInfo', 'getCartInfo'
     ]),
-    ...mapState(["categoryS", "product_categoryS", "reviewS", "propertyS", "product_propertyS"]),
+    ...mapState(["categoryS", "curUserRole", "product_categoryS", "reviewS", "propertyS", "product_propertyS", "priceS_sale"]),
+    adminFlag() {
+      return this.curUserRole
+    },
     cartinfo() {
       return this.getCartInfo;
     },
@@ -110,9 +121,21 @@ export default {
       let filtered = this.filteredWithRate; /** добавление рейтинга */
       switch (this.filter) { /** Сортировка по основному фильтру */
         case "price_asc":
-          filtered.sort(function (a, b) {
-            return parseInt(a.price) - parseInt(b.price);
-          });
+          /** Сортировка пузырьком фильтрующая цены в зависимости от
+           * того имеется ли цена по скидке */
+          for (let j = filtered.length - 1; j > 0; j--) {
+            for (let i = 0; i < j; i++) {
+              let ps_1 = this.get_price_sale(filtered[i].id)
+              let ps_2 = this.get_price_sale(filtered[i + 1].id)
+              let a = ps_1 > 0 ? ps_1 : filtered[i].price
+              let b = ps_2 > 0 ? ps_2 : filtered[i + 1].price
+              if (a > b) {
+                let temp = filtered[i];
+                filtered[i] = filtered[i + 1];
+                filtered[i + 1] = temp;
+              }
+            }
+          }
           break;
         case "price_desc":
           filtered.sort(function (a, b) {
@@ -233,6 +256,11 @@ export default {
         category = this.categoryInfo.find((c) => c.id === category.parentId);
         this.breadcrumb.push(category.name);
       }
+    },
+    get_price_sale(id) {
+      let price_prod = this.priceS_sale.find((i) => i.product_id === id)
+      if (typeof(price_prod) === "undefined" || ! this.adminFlag) return -1;
+      return price_prod.price_sale;
     },
     mean_rate(item) {
       let cnt_rate = 0;

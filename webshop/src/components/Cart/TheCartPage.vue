@@ -22,7 +22,7 @@
                     <CartCard v-for="(item, index) in cartinfo" :key="index"
                               :name="item.name"
                               :price="item.price"
-                              :price_sale="item.price_sale"
+                              :price_sale="get_price_sale(item.id)"
                               :cnt="item.cnt"
                               :id="item.id"
                               :cart_check="item.cart_check"
@@ -49,10 +49,10 @@
                               </td>
                               <td class="cart__info_label">
                                 <div class="cart__product-sum">
-                                  <span class="catalog__price_sale_not">
+                                  <span :class="{'catalog__price_sale_not' : adminFlag, 'catalog__price_sale': !adminFlag}">
                                     {{ totalCost }} руб
                                   </span>
-                                  <div class="catalog_money_sale">
+                                  <div v-if="adminFlag" class="catalog_money_sale">
                                     {{ totalCostSale }} руб
                                   </div>
                                 </div>
@@ -61,12 +61,12 @@
                         </table>
                     </div>
                     <div class="cart__button_send">
-                        <button v-if="mail !== ''"
+                        <button v-if="adminFlag"
                                 class="send_cart"
                                 @click="sendEmail()">
                           Оформить заказ
                         </button>
-                      <div v-else>
+                      <div v-if="!adminFlag">
                         Чтобы оформить заказ пройдите
                         <router-link to="/login">
                           авторизацию
@@ -99,14 +99,12 @@ export default {
   },
   computed: {
     ...mapGetters(['getCartInfo']),
-    ...mapState(['curUserId', 'userS']),
+    ...mapState(['curUserRole', 'userS', "priceS_sale"]),
     cartinfo() {
       return this.getCartInfo;
     },
-    mail() {
-      let userObj = this.userS.find((i) => i.id === this.curUserId);
-      if (typeof userObj === "undefined") return '';
-      return userObj.email;
+    adminFlag() {
+      return this.curUserRole;
     },
     cnt_bin() {
       return this.getTotal('cnt');
@@ -130,9 +128,16 @@ export default {
             case 'price':
               total += item.price * item.cnt;
               break;
-            case 'price_sale':
-              total += item.price_sale * item.cnt;
+            case 'price_sale': {
+              let pr;
+              if (this.get_price_sale(item.id) > 0) {
+                pr = this.get_price_sale(item.id);
+              } else {
+                pr = item.price;
+              }
+              total += pr * item.cnt;
               break;
+            }
             case 'cnt':
               total += item.cnt;
               break;
@@ -141,6 +146,11 @@ export default {
       }
       if (flag === 'cnt') return total
       return formatNumberWithSpaces(total);
+    },
+    get_price_sale(id) {
+      let price_prod = this.priceS_sale.find((i) => i.product_id === id)
+      if (typeof(price_prod) === "undefined" || ! this.adminFlag) return -1;
+      return price_prod.price_sale;
     },
     updateCart(item, id, newCnt) {
       if (typeof newCnt === typeof false)

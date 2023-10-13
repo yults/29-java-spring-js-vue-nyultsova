@@ -122,8 +122,8 @@ export default {
           .min(9, "Price alert: It's too cheap and not profitable to sell")
           .max(1000000000, "Price alert: It's too expensive, no one has that kind of money"),
       product_price_sale: yup
-          .number()
-          .max(1000000000, "Sale price alert: It's too expensive, no one has that kind of money"),
+          .string()
+          .max(10, "Sale price alert: It's too expensive, no one has that kind of money"),
       product_quantity: yup
           .number()
           .required("Quantity is required!")
@@ -141,7 +141,7 @@ export default {
       image: Array,
       name: "",
       price: null,
-      price_sale: null,
+      price_sale: '',
       quantity: null,
       newPicIds: []
     };
@@ -157,6 +157,11 @@ export default {
     addProduct() {
       if (this.newPicIds.length === 0) {
         this.message = "Нужно добавить хотя бы одну картинку";
+        return
+      }
+      if (this.price_sale.length !== 0
+          && parseInt(this.price_sale).toString() !== this.price_sale) {
+        this.message = "Цена по скидке не является числом";
         return
       }
       this.$store.commit('addProductByAdminPage', {
