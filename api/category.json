@@ -1,0 +1,51 @@
+{
+  "category": [
+    {
+      "id": 1,
+      "parentId": null,
+      "name": "Смартфоны"
+    },
+    {
+      "id": 2,
+      "parentId": 1,
+      "name": "Apple"
+    },
+    {
+      "id": 3,
+      "parentId": 1,
+      "name": "Samsung"
+    },
+    {
+      "id": 4,
+      "parentId": 1,
+      "name": "Сопутствующие товары"
+    },
+    {
+      "id": 5,
+      "parentId": 4,
+      "name": "Наушники"
+    },
+    {
+      "id": 6,
+      "parentId": 4,
+      "name": "Чехлы"
+    },
+    {
+      "id": 7,
+      "parentId": null,
+      "name": "Аудиотехника"
+    }
+  ,
+    {
+      "id": 8,
+      "parentId": 7,
+      "name": "Портативные колонки"
+    }
+  ,
+    {
+      "id": 9,
+      "parentId": 7,
+      "name": "Наушники"
+    }
+  ]
+}

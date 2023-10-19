@@ -1,0 +1,20 @@
+{
+  "review_image": [
+    {
+      "id": 1,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/AppleiPhone13.png?raw=true"
+    },
+    {
+      "id": 2,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/AppleiPhone14.png?raw=true"
+    },
+    {
+      "id": 3,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/SamsungGalaxyS23Ultra.png?raw=true"
+    },
+    {
+      "id": 4,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/AppleAirPodsPro.png?raw=true"
+    }
+  ]
+}

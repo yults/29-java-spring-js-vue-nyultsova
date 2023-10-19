@@ -1,0 +1,40 @@
+{
+  "product_image": [
+    {
+      "id": 1,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/AppleiPhone13.png?raw=true"
+    },
+    {
+      "id": 2,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/AppleiPhone14.png?raw=true"
+    },
+    {
+      "id": 3,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/SamsungGalaxyS23Ultra.png?raw=true"
+    },
+    {
+      "id": 4,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/AppleAirPodsPro.png?raw=true"
+    },
+    {
+      "id": 5,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/CaseGooglePixel7.png?raw=true"
+    },
+    {
+      "id": 7,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/GooglePixelWatch.png?raw=true"
+    },
+    {
+      "id": 6,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/GooglePixel7Pro.png?raw=true"
+    },
+    {
+      "id": 8,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/CaseAppleiPhone13mini.png?raw=true"
+    },
+    {
+      "id": 9,
+      "url": "https://github.com/yults/29-java-spring-js-vue-nyultsova/blob/student/webshop/src/assets/img/CaseAppleiPhone14.png?raw=true"
+    }
+  ]
+}
