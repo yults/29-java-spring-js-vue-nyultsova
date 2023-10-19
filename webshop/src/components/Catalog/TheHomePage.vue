@@ -55,8 +55,7 @@
                       :key="item.id"
                       @add-to-cart="addToCart(item.id)"
                   ></CatalogCard>
-<!--                  <InfiniteLoading target="#app" @infinite="load">-->
-<!--                    </InfiniteLoading>-->
+                  <div v-if="isLoading" class="loading">Loading...</div>
                 </div>
               </div>
         </div>
@@ -75,8 +74,6 @@ import CatalogCard from "./CatalogCard.vue";
 import CategoryComponent from '@/components/Category/CategoryNode.vue'
 import HeaderRight from "@/components/Buttons/HeaderRight.vue";
 import CatalogFilter from "@/components/Catalog/CatalogFilter.vue";
-// import InfiniteLoading from "v3-infinite-loading";
-import "v3-infinite-loading/lib/style.css"
 
 export default {
   components: {
@@ -84,7 +81,6 @@ export default {
     CatalogCard,
     CatalogFilter,
     CategoryComponent,
-    // InfiniteLoading
   },
   computed: {
     ...mapGetters([
@@ -184,7 +180,7 @@ export default {
       return filtered
     },
     filteredWithRate() {
-      let filtered = this.info;
+      let filtered = this.products_infinite;
       return filtered.map(product => ({
         ...product,
         rate: this.mean_rate(product.id),
@@ -213,6 +209,7 @@ export default {
   },
   data() {
     return {
+      products_infinite: [], // Массив для хранения товаров
       breadcrumb: ["Главная"],
       breadcrumb2: "",
       breadcrumbCnt: 0,
@@ -232,6 +229,7 @@ export default {
       showFingNothing: false,
       showMenu: false,
       to_filter: "",
+      isLoading: false,
     };
   },
   methods: {
@@ -283,7 +281,7 @@ export default {
       this.property_filter = [];
       this.filter = 'price_asc';
       this.clear_filter = true;
-      this.filteredInfo = this.info;
+      this.filteredInfo = this.products_infinite;
     },
     propertyFilterUpdate(data) {
       this.property_filter = data.property_filter;
@@ -292,6 +290,35 @@ export default {
       return this.property.filter((prop) => {
         return prop.parentId === prop_names.id
       });
+    },
+    async loadMoreProducts() {
+      try {
+        this.isLoading = true;
+
+        // Отправка запроса на сервер
+        const response = await fetch('/api/db.json');
+
+        if (!response.ok) {
+          throw new Error('Ошибка запроса на сервер');
+        }
+
+        const data = await response.json();
+        console.log(data)
+        let new_prod = data.map(product => ({
+          ...product,
+          cart_check: false,
+          cnt: 0,
+          avail: product.quantity === 0 ? "Нет в наличии" : product.quantity < 6 ? "Мало" : "В наличии"
+        }));
+        console.log(new_prod)
+        // Добавление полученных товаров в массив
+        this.products_infinite.push(...new_prod);
+
+        this.isLoading = false;
+      } catch (error) {
+        console.error(error);
+        this.isLoading = false;
+      }
     },
     showFingNothingfun(bol) {
       this.showFingNothing = bol;
@@ -306,6 +333,9 @@ export default {
       this.filter = data.filter;
     },
   },
+  created() {
+    this.loadMoreProducts();
+  },
   mounted() {
     UserService.getPublicContent().then((response) => {
       this.content = response.data;
@@ -316,6 +346,15 @@ export default {
               error.response.data.message) ||
           error.message ||
           error.toString();
+    });
+    // Слушатель скролла страницы
+    window.addEventListener('scroll', () => {
+      const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+
+      // Проверка достижения конца страницы
+      if (scrollTop + clientHeight >= scrollHeight) {
+        this.loadMoreProducts();
+      }
     });
   },
   name: "HomePage",
