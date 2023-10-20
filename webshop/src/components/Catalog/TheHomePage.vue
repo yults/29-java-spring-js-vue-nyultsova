@@ -304,7 +304,7 @@ export default {
 
         const data = await response.json();
         console.log(data)
-        let new_prod = data.map(product => ({
+        let new_prod = data.info.map(product => ({
           ...product,
           cart_check: false,
           cnt: 0,
