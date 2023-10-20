@@ -230,6 +230,8 @@ export default {
       showMenu: false,
       to_filter: "",
       isLoading: false,
+      page: 1,
+      stopInfinite : false,
     };
   },
   methods: {
@@ -294,23 +296,24 @@ export default {
     async loadMoreProducts() {
       try {
         this.isLoading = true;
-
-        // Отправка запроса на сервер
-        const response = await fetch('/api/db.json');
-
-        if (!response.ok) {
-          throw new Error('Ошибка запроса на сервер');
+        let data;
+        try {
+          const response = await fetch(`http://localhost:3000/api/products?page=${this.page}`);
+          if (!response.ok) throw new Error('Network response was not ok');
+          data = await response.json();
+          if (Object.keys(data).length === 0) {
+            this.stopInfinite = true;
+            this.isLoading = false;
+            return;
+          }
         }
-
-        const data = await response.json();
-        console.log(data)
-        let new_prod = data.info.map(product => ({
+        catch (error) { console.error(error); }
+        let new_prod = data.map(product => ({
           ...product,
           cart_check: false,
           cnt: 0,
           avail: product.quantity === 0 ? "Нет в наличии" : product.quantity < 6 ? "Мало" : "В наличии"
         }));
-        console.log(new_prod)
         // Добавление полученных товаров в массив
         this.products_infinite.push(...new_prod);
 
@@ -350,9 +353,9 @@ export default {
     // Слушатель скролла страницы
     window.addEventListener('scroll', () => {
       const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
-
       // Проверка достижения конца страницы
-      if (scrollTop + clientHeight >= scrollHeight) {
+      if (this.stopInfinite === false && scrollTop + clientHeight >= scrollHeight - 100) {
+        this.page++;
         this.loadMoreProducts();
       }
     });

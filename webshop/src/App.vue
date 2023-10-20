@@ -1,12 +1,9 @@
 <template>
   <div id="app">
-    <div v-if="loading" class="spinner-border spinner-border-lr"></div>
-    <div v-else>
       <div class="container1">
         <router-view />
       </div>
     </div>
-  </div>
 </template>
 
 
@@ -53,16 +50,16 @@ export default {
       this.$store.dispatch('fetchUsersReviews');
     }
   },
-  data() {
-    return {
-      loading: true
-    }
-  },
+  // data() {
+  //   return {
+  //     loading: true
+  //   }
+  // },
   async created() {
     await this.getData();
-    setTimeout(() => {
-      this.loading = false;
-    }, 500);
+    // setTimeout(() => {
+    //   this.loading = false;
+    // }, 10);
   },
 };
 </script>
