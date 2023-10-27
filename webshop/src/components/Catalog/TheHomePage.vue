@@ -48,7 +48,6 @@
                       :avail="item.avail"
                       :price="parseInt(item.price)"
                       :price_sale="get_price_sale(item.id)"
-                      :cnt="item.cnt"
                       :quantity="item.quantity"
                       :id="item.id"
                       :cart_check="item.cart_check"
@@ -311,7 +310,6 @@ export default {
         let new_prod = data.map(product => ({
           ...product,
           cart_check: false,
-          cnt: 0,
           avail: product.quantity === 0 ? "Нет в наличии" : product.quantity < 6 ? "Мало" : "В наличии"
         }));
         // Добавление полученных товаров в массив

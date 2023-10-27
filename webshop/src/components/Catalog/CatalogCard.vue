@@ -38,7 +38,7 @@
             <div class="catalog__cart">
                 <div v-if="showBaseSwitcher"
                      class="cart__product-cnt">
-                    <BaseSwitcher :id="id" :cnt="cnt"
+                    <BaseSwitcher :id="id" :cnt="info.cnt"
                                   @update-cart="updateCart(id, $event)"
                                   @remove-item="removeItem(id)"
                     ></BaseSwitcher>
@@ -86,7 +86,7 @@
  * При нажатии на названия товара открывается персональная страница товара с отзывами
  */
 
-import { mapState} from "vuex";
+import {mapGetters, mapState} from "vuex";
  import BaseSlider from "@/components/Buttons/BaseSlider.vue";
  import BaseSwitcher from "@/components/Buttons/BaseSwitcher.vue";
  import {formatNumberWithSpaces} from "@/js/globalMethods";
@@ -100,6 +100,10 @@ export default {
     ...mapState([
       'reviewS', 'product_propertyS', 'propertyS', 'product_imageS', 'product_image'
     ]),
+    ...mapGetters(['getInfo']),
+    info() {
+      return this.getInfo.find((i) => i.id === this.id);
+    },
     cnt_rate() { /** количество отзывов */
       let rate_cnt = 0;
       this.reviewS.forEach((item) => {
@@ -148,7 +152,7 @@ export default {
       return this.propertyS;
     },
     showBaseSwitcher() { /** Переключение с "В корзину" на плашку свитчера */
-      return this.cnt > 0
+      return this.info.cnt > 0
     },
     starContainerWidth() { /** Вычисляем ширину контейнера звезд */
       return Math.round(this.mean_rate * 20 + 4);
@@ -194,10 +198,6 @@ export default {
   props: {
     avail: {
       type: String,
-      required: true
-    },
-    cnt: {
-      type: Number,
       required: true
     },
     description: {
